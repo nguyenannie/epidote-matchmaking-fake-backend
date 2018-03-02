@@ -16,7 +16,7 @@ public class Apprentice extends User {
   private String cohortClass;
   @Column(name = "is_hungarian_speaker")
   private boolean isHungarianSpeaker;
-  @Column (name = "slack_channel_id")
+  @Column(name = "slack_channel_id")
   private String slackChannelId;
 
   public Apprentice() {

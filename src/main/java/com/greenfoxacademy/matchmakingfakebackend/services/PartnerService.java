@@ -1,6 +1,5 @@
 package com.greenfoxacademy.matchmakingfakebackend.services;
 
-import com.greenfoxacademy.matchmakingfakebackend.models.Apprentice;
 import com.greenfoxacademy.matchmakingfakebackend.models.Partner;
 import com.greenfoxacademy.matchmakingfakebackend.repositories.PartnerRepo;
 import org.springframework.beans.factory.annotation.Autowired;

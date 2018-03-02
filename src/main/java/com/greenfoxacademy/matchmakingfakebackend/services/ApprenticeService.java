@@ -4,6 +4,7 @@ import com.greenfoxacademy.matchmakingfakebackend.models.Apprentice;
 import com.greenfoxacademy.matchmakingfakebackend.repositories.ApprenticeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 import javax.persistence.criteria.Predicate;
 import java.util.ArrayList;
 import java.util.List;
