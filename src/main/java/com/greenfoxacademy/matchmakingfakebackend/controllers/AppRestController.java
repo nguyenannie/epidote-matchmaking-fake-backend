@@ -86,4 +86,3 @@ public class AppRestController {
     return apprenticeService.getAllByClassCohort(cohortClass);
   }
 }
-//TODO: bug fix todo, should delete later
