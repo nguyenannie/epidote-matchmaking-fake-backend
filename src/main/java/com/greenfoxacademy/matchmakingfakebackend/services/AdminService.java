@@ -1,7 +1,7 @@
 package com.greenfoxacademy.matchmakingfakebackend.services;
 
 import com.greenfoxacademy.matchmakingfakebackend.models.Admin;
-import com.greenfoxacademy.matchmakingfakebackend.repositories.PartnerRepo;
+import com.greenfoxacademy.matchmakingfakebackend.repositories.AdminRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,10 +13,10 @@ import java.util.List;
 public class AdminService {
 
   @Autowired
-  PartnerRepo partnerRepo;
+  AdminRepo adminRepo;
 
   public List adminList(Admin adminFilter) {
-    List admins = partnerRepo.findAll((root, query, cb) -> {
+    List admins = adminRepo.findAll((root, query, cb) -> {
       List<Predicate> predicates = new ArrayList<>();
 
       if (adminFilter.getFirstName() != null) {
