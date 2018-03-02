@@ -1,5 +1,7 @@
 package com.greenfoxacademy.matchmakingfakebackend.models;
 
+import com.greenfoxacademy.matchmakingfakebackend.models.enums.Status;
+
 import javax.persistence.*;
 
 @MappedSuperclass
@@ -12,8 +14,9 @@ public abstract class User {
   protected String email;
   @Column(name = "phone_number")
   protected String phoneNumber;
-  @Column(name = "is_active_user")
-  protected boolean isActiveUser;
+  @Column(name = "status")
+  @Enumerated(value = EnumType.STRING)
+  protected Status status;
 
   public User() {
   }
@@ -42,11 +45,11 @@ public abstract class User {
     this.phoneNumber = phoneNumber;
   }
 
-  public boolean isActiveUser() {
-    return isActiveUser;
+  public Status getStatus() {
+    return status;
   }
 
-  public void setActiveUser(boolean activeUser) {
-    this.isActiveUser = activeUser;
+  public void setStatus(Status status) {
+    this.status = status;
   }
 }
