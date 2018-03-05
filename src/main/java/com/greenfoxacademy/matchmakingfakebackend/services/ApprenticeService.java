@@ -51,12 +51,4 @@ public class ApprenticeService {
     });
     return apprentices;
   }
-
-  public List<Apprentice> getAllByCohort(String cohort) {
-    return apprenticeRepo.findByCohort(cohort);
-  }
-
-  public List<Apprentice> getAllByClassCohort(String cohortClass) {
-    return apprenticeRepo.findByCohortClass(cohortClass);
-  }
 }

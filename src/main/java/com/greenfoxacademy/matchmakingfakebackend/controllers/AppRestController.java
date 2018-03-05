@@ -2,10 +2,12 @@ package com.greenfoxacademy.matchmakingfakebackend.controllers;
 
 import com.greenfoxacademy.matchmakingfakebackend.models.Admin;
 import com.greenfoxacademy.matchmakingfakebackend.models.Apprentice;
+import com.greenfoxacademy.matchmakingfakebackend.models.Cohort;
 import com.greenfoxacademy.matchmakingfakebackend.models.Partner;
 import com.greenfoxacademy.matchmakingfakebackend.models.enums.Status;
 import com.greenfoxacademy.matchmakingfakebackend.services.AdminService;
 import com.greenfoxacademy.matchmakingfakebackend.services.ApprenticeService;
+import com.greenfoxacademy.matchmakingfakebackend.services.CohortService;
 import com.greenfoxacademy.matchmakingfakebackend.services.PartnerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -23,6 +25,9 @@ public class AppRestController {
 
   @Autowired
   AdminService adminService;
+
+  @Autowired
+  CohortService cohortService;
 
   @RequestMapping(value = "/api/apprentice", method = RequestMethod.GET)
   public List apprenticeSearch(@RequestParam(required = false) String cohort,
@@ -76,13 +81,15 @@ public class AppRestController {
     return adminService.adminList(admin);
   }
 
-  @RequestMapping(value = "api/apprentice/cohort/{cohort}", method = RequestMethod.GET)
-  public List<Apprentice> apprenticesByCohort(@PathVariable String cohort) {
-    return apprenticeService.getAllByCohort(cohort);
-  }
+  @RequestMapping(value = "/api/cohort", method = RequestMethod.GET)
+  public List cohortSearch(@RequestParam(required = false) String cohortName,
+                           @RequestParam(required = false) Status status) {
 
-  @RequestMapping(value = "/api/apprentice/class/{cohortClass}", method = RequestMethod.GET)
-  public List<Apprentice> apprenticesByClass(@PathVariable String cohortClass) {
-    return apprenticeService.getAllByClassCohort(cohortClass);
+    Cohort cohort = new Cohort();
+
+    cohort.setCohortName(cohortName);
+    cohort.setStatus(status);
+
+    return cohortService.cohortList(cohort);
   }
 }
