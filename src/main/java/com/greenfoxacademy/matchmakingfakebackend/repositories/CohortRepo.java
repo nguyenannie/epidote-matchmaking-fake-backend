@@ -7,5 +7,4 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface CohortRepo extends CrudRepository<Cohort, Integer>, JpaSpecificationExecutor {
-
 }

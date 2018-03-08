@@ -22,15 +22,12 @@ public class PartnerService {
       if (partnerFilter.getCompanyName() != null) {
         predicates.add(cb.equal(root.get("companyName"), partnerFilter.getCompanyName()));
       }
-
       if (partnerFilter.getEmail() != null) {
         predicates.add(cb.equal(root.get("email"), partnerFilter.getEmail()));
       }
-
       if (partnerFilter.getStatus() != null) {
         predicates.add(cb.equal(root.get("status"), partnerFilter.getStatus()));
       }
-
       return cb.and(predicates.toArray(new Predicate[0]));
     });
     return partners;

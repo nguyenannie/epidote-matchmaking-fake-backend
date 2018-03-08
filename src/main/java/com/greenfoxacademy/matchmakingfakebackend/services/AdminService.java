@@ -22,19 +22,15 @@ public class AdminService {
       if (adminFilter.getFirstName() != null) {
         predicates.add(cb.equal(root.get("firstName"), adminFilter.getFirstName()));
       }
-
       if (adminFilter.getLastName() != null) {
         predicates.add(cb.equal(root.get("lastName"), adminFilter.getLastName()));
       }
-
       if (adminFilter.getEmail() != null) {
         predicates.add(cb.equal(root.get("email"), adminFilter.getEmail()));
       }
-
       if (adminFilter.getStatus() != null) {
         predicates.add(cb.equal(root.get("status"), adminFilter.getStatus()));
       }
-
       return cb.and(predicates.toArray(new Predicate[0]));
     });
     return admins;

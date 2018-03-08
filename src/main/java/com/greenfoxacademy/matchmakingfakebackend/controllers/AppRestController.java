@@ -37,9 +37,7 @@ public class AppRestController {
                                @RequestParam(required = false) String email,
                                @RequestParam(required = false) String slackChannelId,
                                @RequestParam(required = false) Status status) {
-
     Apprentice apprentice = new Apprentice();
-
     apprentice.setCohort(cohort);
     apprentice.setCohortClass(cohortClass);
     apprentice.setFirstName(firstName);
@@ -47,7 +45,6 @@ public class AppRestController {
     apprentice.setEmail(email);
     apprentice.setSlackChannelId(slackChannelId);
     apprentice.setStatus(status);
-
     return apprenticeService.apprenticeList(apprentice);
   }
 
@@ -55,13 +52,10 @@ public class AppRestController {
   public List partnerSearch(@RequestParam(required = false) String companyName,
                             @RequestParam(required = false) String email,
                             @RequestParam(required = false) Status status) {
-
     Partner partner = new Partner();
-
     partner.setCompanyName(companyName);
     partner.setEmail(email);
     partner.setStatus(status);
-
     return partnerService.partnerList(partner);
   }
 
@@ -70,9 +64,7 @@ public class AppRestController {
                           @RequestParam(required = false) String lastName,
                           @RequestParam(required = false) String email,
                           @RequestParam(required = false) Status status) {
-
     Admin admin = new Admin();
-
     admin.setFirstName(firstName);
     admin.setLastName(lastName);
     admin.setEmail(email);
@@ -84,12 +76,9 @@ public class AppRestController {
   @RequestMapping(value = "/api/cohort", method = RequestMethod.GET)
   public List cohortSearch(@RequestParam(required = false) String cohortName,
                            @RequestParam(required = false) Status status) {
-
     Cohort cohort = new Cohort();
-
     cohort.setCohortName(cohortName);
     cohort.setStatus(status);
-
     return cohortService.cohortList(cohort);
   }
 }

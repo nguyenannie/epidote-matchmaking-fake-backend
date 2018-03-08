@@ -1,6 +1,5 @@
 package com.greenfoxacademy.matchmakingfakebackend.models;
 
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;

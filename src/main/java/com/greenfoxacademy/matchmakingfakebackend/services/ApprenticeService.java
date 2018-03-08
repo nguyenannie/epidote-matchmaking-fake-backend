@@ -22,31 +22,24 @@ public class ApprenticeService {
       if (apprenticeFilter.getCohort() != null) {
         predicates.add(cb.equal(root.get("cohort"), apprenticeFilter.getCohort()));
       }
-
       if (apprenticeFilter.getCohortClass() != null) {
         predicates.add(cb.equal(root.get("cohortClass"), apprenticeFilter.getCohortClass()));
       }
-
       if (apprenticeFilter.getFirstName() != null) {
         predicates.add(cb.equal(root.get("firstName"), apprenticeFilter.getFirstName()));
       }
-
       if (apprenticeFilter.getLastName() != null) {
         predicates.add(cb.equal(root.get("lastName"), apprenticeFilter.getLastName()));
       }
-
       if (apprenticeFilter.getEmail() != null) {
         predicates.add(cb.equal(root.get("email"), apprenticeFilter.getEmail()));
       }
-
       if (apprenticeFilter.getSlackChannelId() != null) {
         predicates.add(cb.equal(root.get("slackChannelId"), apprenticeFilter.getSlackChannelId()));
       }
-
       if (apprenticeFilter.getStatus() != null) {
         predicates.add(cb.equal(root.get("status"), apprenticeFilter.getStatus()));
       }
-
       return cb.and(predicates.toArray(new Predicate[0]));
     });
     return apprentices;
