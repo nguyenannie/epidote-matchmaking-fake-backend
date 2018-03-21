@@ -12,8 +12,12 @@ import java.util.List;
 @Service
 public class CohortService {
 
+  private final CohortRepo cohortRepo;
+
   @Autowired
-  CohortRepo cohortRepo;
+  public CohortService(CohortRepo cohortRepo) {
+    this.cohortRepo = cohortRepo;
+  }
 
   public List cohortList(Cohort cohortFilter) {
     List cohorts = cohortRepo.findAll((root, query, cb) -> {
@@ -29,4 +33,5 @@ public class CohortService {
     });
     return cohorts;
   }
+
 }

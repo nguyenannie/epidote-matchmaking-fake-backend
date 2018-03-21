@@ -12,8 +12,12 @@ import java.util.List;
 @Service
 public class ApprenticeService {
 
+  private final ApprenticeRepo apprenticeRepo;
+
   @Autowired
-  ApprenticeRepo apprenticeRepo;
+  public ApprenticeService(ApprenticeRepo apprenticeRepo) {
+    this.apprenticeRepo = apprenticeRepo;
+  }
 
   public List apprenticeList(Apprentice apprenticeFilter) {
     List apprentices = apprenticeRepo.findAll((root, query, cb) -> {
@@ -34,14 +38,15 @@ public class ApprenticeService {
       if (apprenticeFilter.getEmail() != null) {
         predicates.add(cb.equal(root.get("email"), apprenticeFilter.getEmail()));
       }
-      if (apprenticeFilter.getSlackChannelId() != null) {
-        predicates.add(cb.equal(root.get("slackChannelId"), apprenticeFilter.getSlackChannelId()));
-      }
       if (apprenticeFilter.getStatus() != null) {
         predicates.add(cb.equal(root.get("status"), apprenticeFilter.getStatus()));
+      }
+      if (apprenticeFilter.getProgram() != null) {
+        predicates.add(cb.equal(root.get("status"), apprenticeFilter.getProgram()));
       }
       return cb.and(predicates.toArray(new Predicate[0]));
     });
     return apprentices;
   }
+
 }

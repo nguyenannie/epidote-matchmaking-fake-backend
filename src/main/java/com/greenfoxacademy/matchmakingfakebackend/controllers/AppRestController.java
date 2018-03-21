@@ -4,6 +4,7 @@ import com.greenfoxacademy.matchmakingfakebackend.models.Admin;
 import com.greenfoxacademy.matchmakingfakebackend.models.Apprentice;
 import com.greenfoxacademy.matchmakingfakebackend.models.Cohort;
 import com.greenfoxacademy.matchmakingfakebackend.models.Partner;
+import com.greenfoxacademy.matchmakingfakebackend.models.enums.Program;
 import com.greenfoxacademy.matchmakingfakebackend.models.enums.Status;
 import com.greenfoxacademy.matchmakingfakebackend.services.AdminService;
 import com.greenfoxacademy.matchmakingfakebackend.services.ApprenticeService;
@@ -17,17 +18,18 @@ import java.util.List;
 @RestController
 public class AppRestController {
 
-  @Autowired
-  ApprenticeService apprenticeService;
+  private final ApprenticeService apprenticeService;
+  private final PartnerService partnerService;
+  private final AdminService adminService;
+  private final CohortService cohortService;
 
   @Autowired
-  PartnerService partnerService;
-
-  @Autowired
-  AdminService adminService;
-
-  @Autowired
-  CohortService cohortService;
+  public AppRestController(ApprenticeService apprenticeService, PartnerService partnerService, AdminService adminService, CohortService cohortService) {
+    this.apprenticeService = apprenticeService;
+    this.partnerService = partnerService;
+    this.adminService = adminService;
+    this.cohortService = cohortService;
+  }
 
   @RequestMapping(value = "/api/apprentice", method = RequestMethod.GET)
   public List apprenticeSearch(@RequestParam(required = false) String cohort,
@@ -35,27 +37,29 @@ public class AppRestController {
                                @RequestParam(required = false) String firstName,
                                @RequestParam(required = false) String lastName,
                                @RequestParam(required = false) String email,
-                               @RequestParam(required = false) String slackChannelId,
-                               @RequestParam(required = false) Status status) {
+                               @RequestParam(required = false) Status status,
+                               @RequestParam(required = false)Program program) {
     Apprentice apprentice = new Apprentice();
     apprentice.setCohort(cohort);
     apprentice.setCohortClass(cohortClass);
     apprentice.setFirstName(firstName);
     apprentice.setLastName(lastName);
     apprentice.setEmail(email);
-    apprentice.setSlackChannelId(slackChannelId);
     apprentice.setStatus(status);
+    apprentice.setProgram(program);
     return apprenticeService.apprenticeList(apprentice);
   }
 
   @RequestMapping(value = "/api/partner", method = RequestMethod.GET)
   public List partnerSearch(@RequestParam(required = false) String companyName,
                             @RequestParam(required = false) String email,
-                            @RequestParam(required = false) Status status) {
+                            @RequestParam(required = false) Status status,
+                            @RequestParam(required = false)Program program) {
     Partner partner = new Partner();
     partner.setCompanyName(companyName);
     partner.setEmail(email);
     partner.setStatus(status);
+    partner.setProgram(program);
     return partnerService.partnerList(partner);
   }
 

@@ -12,8 +12,12 @@ import java.util.List;
 @Service
 public class PartnerService {
 
+  private final PartnerRepo partnerRepo;
+
   @Autowired
-  PartnerRepo partnerRepo;
+  public PartnerService(PartnerRepo partnerRepo) {
+    this.partnerRepo = partnerRepo;
+  }
 
   public List partnerList(Partner partnerFilter) {
     List partners = partnerRepo.findAll((root, query, cb) -> {
@@ -28,8 +32,12 @@ public class PartnerService {
       if (partnerFilter.getStatus() != null) {
         predicates.add(cb.equal(root.get("status"), partnerFilter.getStatus()));
       }
+      if (partnerFilter.getProgram() != null) {
+        predicates.add(cb.equal(root.get("status"), partnerFilter.getProgram()));
+      }
       return cb.and(predicates.toArray(new Predicate[0]));
     });
     return partners;
   }
+
 }
