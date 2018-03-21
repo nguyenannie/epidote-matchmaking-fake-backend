@@ -1,8 +1,8 @@
 package com.greenfoxacademy.matchmakingfakebackend.models.enums;
 
-public enum Status {
+public enum  Program {
 
-  ACTIVE,
-  INACTIVE
-  
+  GOLDPARTNER,
+  HEADHUNTING;
+
 }
