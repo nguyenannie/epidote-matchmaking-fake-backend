@@ -12,8 +12,12 @@ import java.util.List;
 @Service
 public class AdminService {
 
+  private final AdminRepo adminRepo;
+
   @Autowired
-  AdminRepo adminRepo;
+  public AdminService(AdminRepo adminRepo) {
+    this.adminRepo = adminRepo;
+  }
 
   public List adminList(Admin adminFilter) {
     List admins = adminRepo.findAll((root, query, cb) -> {
@@ -35,4 +39,5 @@ public class AdminService {
     });
     return admins;
   }
+
 }

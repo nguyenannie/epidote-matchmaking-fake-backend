@@ -28,4 +28,5 @@ public class Partner extends User {
             + ", Phone Number : " + this.phoneNumber
             + " }";
   }
+
 }

@@ -40,4 +40,5 @@ public class Cohort {
   public void setStatus(Status status) {
     this.status = status;
   }
+
 }

@@ -1,5 +1,6 @@
 package com.greenfoxacademy.matchmakingfakebackend.models;
 
+import com.greenfoxacademy.matchmakingfakebackend.models.enums.Program;
 import com.greenfoxacademy.matchmakingfakebackend.models.enums.Status;
 
 import javax.persistence.*;
@@ -17,6 +18,9 @@ public abstract class User {
   @Column(name = "status")
   @Enumerated(value = EnumType.STRING)
   protected Status status;
+  @Column(name = "program")
+  @Enumerated(value = EnumType.STRING)
+  protected Program program;
 
   public User() {
   }
@@ -52,4 +56,13 @@ public abstract class User {
   public void setStatus(Status status) {
     this.status = status;
   }
+
+  public Program getProgram() {
+    return program;
+  }
+
+  public void setProgram(Program program) {
+    this.program = program;
+  }
+
 }
