@@ -21,12 +21,6 @@ public abstract class User {
   @Column(name = "program")
   @Enumerated(value = EnumType.STRING)
   protected Program program;
-  @Column(name = "has_link_been_sent")
-  private boolean hasLinkBeenSent;
-  @Column(name = "has_form_been_submitted")
-  private boolean hasFormSubmitted;
-  @Column(name = "has_expired")
-  private boolean hasExpired;
 
   public User() {
   }
@@ -71,27 +65,4 @@ public abstract class User {
     this.program = program;
   }
 
-  public boolean getHasLinkBeenSent() {
-    return hasLinkBeenSent;
-  }
-
-  public void setHasLinkBeenSent(boolean hasLinkBeenSent) {
-    this.hasLinkBeenSent = hasLinkBeenSent;
-  }
-
-  public boolean getHasFormSubmitted() {
-    return hasFormSubmitted;
-  }
-
-  public void setHasFormSubmitted(boolean hasFormSubmitted) {
-    this.hasFormSubmitted = hasFormSubmitted;
-  }
-
-  public boolean getHasExpired() {
-    return hasExpired;
-  }
-
-  public void setHasExpired(boolean hasExpired) {
-    this.hasExpired = hasExpired;
-  }
 }
