@@ -25,7 +25,7 @@ public abstract class User {
   private boolean hasLinkBeenSent;
   @Column(name = "has_form_been_submitted")
   private boolean hasFormSubmitted;
-  @Column(name = "has_expired")
+  @Column
   private boolean hasExpired;
 
   public User() {
@@ -87,7 +87,7 @@ public abstract class User {
     this.hasFormSubmitted = hasFormSubmitted;
   }
 
-  public boolean getHasExpired() {
+  public boolean isHasExpired() {
     return hasExpired;
   }
 
