@@ -33,7 +33,7 @@ public class PartnerService {
         predicates.add(cb.equal(root.get("status"), partnerFilter.getStatus()));
       }
       if (partnerFilter.getProgram() != null) {
-        predicates.add(cb.equal(root.get("status"), partnerFilter.getProgram()));
+        predicates.add(cb.equal(root.get("program"), partnerFilter.getProgram()));
       }
       return cb.and(predicates.toArray(new Predicate[0]));
     });

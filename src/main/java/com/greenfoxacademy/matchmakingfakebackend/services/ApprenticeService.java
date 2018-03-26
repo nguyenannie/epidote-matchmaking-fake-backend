@@ -42,7 +42,7 @@ public class ApprenticeService {
         predicates.add(cb.equal(root.get("status"), apprenticeFilter.getStatus()));
       }
       if (apprenticeFilter.getProgram() != null) {
-        predicates.add(cb.equal(root.get("status"), apprenticeFilter.getProgram()));
+        predicates.add(cb.equal(root.get("program"), apprenticeFilter.getProgram()));
       }
       return cb.and(predicates.toArray(new Predicate[0]));
     });
